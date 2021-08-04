@@ -1,5 +1,5 @@
 import bpy
-import rbt.rename
+import olc.rename
 
 
 def ShowMessageBox(message = "", title = "Message Box", icon = 'INFO'):
@@ -20,7 +20,7 @@ class WM_OT_searchOp(bpy.types.Operator):
         look_for = self.look_for
         rep_with = self.rep_with
         try:
-            test = rbt.rename.replace(look_for, rep_with)
+            test = olc.rename.replace(look_for, rep_with)
             if test == None:
                 ShowMessageBox("Name Not Found", "WARNING", "ERROR")
                 return {'FINISHED'}
@@ -43,7 +43,7 @@ class WM_OT_addPrefix(bpy.types.Operator):
     def execute(self, context):
         prefix = self.prefix
         try:
-            test = rbt.rename.add_prefix(prefix)
+            test = olc.rename.add_prefix(prefix)
             if test == None:
                 ShowMessageBox("At Least 1 Object Must Be Selected", "WARNING", "ERROR")
                 return {'FINISHED'}
@@ -66,7 +66,7 @@ class WM_OT_addSuffix(bpy.types.Operator):
     def execute(self, context):
         suffix = self.suffix
         try:
-            test = rbt.rename.add_suffix(suffix)
+            test = olc.rename.add_suffix(suffix)
             if test == None:
                 ShowMessageBox("At Least 1 Object Must Be Selected", "WARNING", "ERROR")
                 return {'FINISHED'}
@@ -88,7 +88,7 @@ class WM_OT_matchNames(bpy.types.Operator):
     
     def execute(self, context):
         try:
-            rbt.rename.match_all_names()
+            olc.rename.match_all_names()
             ShowMessageBox("All Now Matched to Object Names", "Valid", "CHECKMARK")
         except:
             ShowMessageBox("Unable to Match to Object Names", "ERROR", "ERROR")
@@ -109,7 +109,7 @@ class WM_OT_renameNum(bpy.types.Operator):
         start_num = self.start_num
         padding = self.padding
         try:
-            test = rbt.rename.add_number(name, start_num, padding)
+            test = olc.rename.add_number(name, start_num, padding)
             if test == None:
                 ShowMessageBox("At Least 1 Object Must Be Selected", "WARNING", "ERROR")
                 return {'FINISHED'}

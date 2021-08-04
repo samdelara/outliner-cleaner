@@ -13,22 +13,22 @@ bl_info = {
 
 import bpy
 import traceback
-import rbt.operators
-import rbt.ui_panel
+import olc.operators
+import olc.ui_panel
 
 
 def register():
   try:
-    rbt.operators.register()
-    rbt.ui_panel.register()
+    olc.operators.register()
+    olc.ui_panel.register()
   except:
     traceback.print_exc()
   print("Registered {}".format(bl_info["name"]))
 
 def unregister():
   try:
-    rbt.operators.unregister()
-    rbt.ui_panel.unregister()
+    olc.operators.unregister()
+    olc.ui_panel.unregister()
   except:
     traceback.print_exc()
   print("Unregistered {}".format(bl_info["name"]))
