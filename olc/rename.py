@@ -1,5 +1,6 @@
 import bpy
 
+# Various functions that are used for the Outliner Cleaner
 
 def find_obj(string):
   """ Returns a list of objects that use a given string in Blender objects """

@@ -1,3 +1,4 @@
+# Necessary info to set up a Blender add-on
 bl_info = {
     "name": "Outliner Cleaner",
     "author": "Sam De Lara",
@@ -16,6 +17,7 @@ import traceback
 import olc.operators
 import olc.ui_panel
 
+# Testing operations & ui_panel to see if add-on is running as expected
 
 def register():
   try:

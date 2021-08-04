@@ -1,12 +1,13 @@
 import bpy
 import olc.rename
 
-
+# Function to draw pop up UI with custom messages
 def ShowMessageBox(message = "", title = "Message Box", icon = 'INFO'):
     def draw(self, context):
         self.layout.label(text=message)
     bpy.context.window_manager.popup_menu(draw, title = title, icon = icon)
 
+# Classes to implement user input & popup UI boxes for each function(s)
 
 class WM_OT_searchOp(bpy.types.Operator):
     """ Search and Replace Names in the Outliner """
@@ -38,6 +39,7 @@ class WM_OT_addPrefix(bpy.types.Operator):
     bl_label = "Add Prefix"
     bl_idname = "wm.addprefix"
     
+    # User input
     prefix : bpy.props.StringProperty(name="Add Prefix:", default= "")
     
     def execute(self, context):
@@ -61,6 +63,7 @@ class WM_OT_addSuffix(bpy.types.Operator):
     bl_label = "Add Suffix"
     bl_idname = "wm.addsuffix"
     
+    # User input
     suffix : bpy.props.StringProperty(name="Add Suffix:", default= "")
     
     def execute(self, context):
@@ -84,6 +87,7 @@ class WM_OT_matchNames(bpy.types.Operator):
     bl_label = "Match to All Object Names"
     bl_idname = "wm.matchname"
     
+    # User input
     suffix : bpy.props.StringProperty(name="Add Suffix:", default= "")
     
     def execute(self, context):
@@ -100,6 +104,7 @@ class WM_OT_renameNum(bpy.types.Operator):
     bl_label = "Rename & Number"
     bl_idname = "wm.renamenum"
     
+    # User input
     name : bpy.props.StringProperty(name="Name:", default= "")
     start_num : bpy.props.IntProperty(name= "Starting Number", default= 1)
     padding : bpy.props.IntProperty(name= "Padding", default= 1)
@@ -121,7 +126,7 @@ class WM_OT_renameNum(bpy.types.Operator):
     def invoke(self, context, event):
         return context.window_manager.invoke_props_dialog(self)       
     
-    
+# List of classes to register/unregister every class for the add-on quickly    
 classes = (
     WM_OT_searchOp,
     WM_OT_addPrefix,
